@@ -36,10 +36,9 @@ public class ThermometerViewController
     hlabel.textProperty().bindBidirectional(viewModel.heatherProperty());
     t1label.textProperty().bindBidirectional(viewModel.temp1Property());
     t2label.textProperty().bindBidirectional(viewModel.temp2Property());
+   // pane.setStyle("-fx-background-color:black");
 
-    viewModel.endProperty().addListener((obs,olB,newB) -> {
-      pane.setStyle("-fx-background-color:red");});
-
+    pane.styleProperty().bindBidirectional(viewModel.styleProperty());
   }
 
   public void reset()
@@ -70,8 +69,6 @@ public class ThermometerViewController
 
   public void setValue(ActionEvent event)
   {
-    System.out.println(highValue.getText() + " HIGH VALUE");
-    System.out.println(lowValue.getText() + " LOW VALUE");
     viewModel.setCriticalValues();
   }
 }

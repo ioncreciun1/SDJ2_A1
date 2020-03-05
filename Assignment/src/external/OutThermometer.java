@@ -35,14 +35,14 @@ public class OutThermometer implements Runnable
 
   @Override public void run()
   {
-    model.addTemperature(id, outsideT);
+    model.addOutdoorTemp(id,outsideT);
 
     while (true)
     {
       try
       {
         outsideT = externalTemperature(outsideT,-20,20);
-        model.addTemperature(id, outsideT);
+        model.addOutdoorTemp(id,outsideT);
         Thread.sleep(sleepTime * 1000);
       }
       catch (InterruptedException e)

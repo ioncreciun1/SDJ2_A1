@@ -9,13 +9,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ThermometerViewController">
+<AnchorPane fx:id="pane" maxHeight="440" maxWidth="618" minHeight="440" minWidth="640" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ThermometerViewController">
    <children>
       <HBox prefHeight="400.0" prefWidth="600.0">
          <children>
             <VBox alignment="TOP_CENTER" prefHeight="400.0" prefWidth="317.0" style="-fx-background-color: rgba(148,148,148,0.50) 100%; -fx-border-color: black; -fx-border-width: 3px 0px 3px 3px;">
                <children>
-                  <Label text="Indor Themperature:">
+                  <Label text="Indoor Temperature:">
                      <VBox.margin>
                         <Insets left="10.0" top="40.0" />
                      </VBox.margin>
@@ -33,7 +33,7 @@
                               <Insets left="20.0" />
                            </HBox.margin>
                         </Label>
-                        <Label fx:id="t1label" prefHeight="26.0" prefWidth="57.0" text="20 ">
+                        <Label fx:id="t1label" prefHeight="26.0" prefWidth="57.0" text="20 " textOverrun="CLIP">
                            <font>
                               <Font size="17.0" />
                            </font>
@@ -58,7 +58,7 @@
                               <Insets left="20.0" />
                            </HBox.margin>
                         </Label>
-                        <Label fx:id="t2label" prefHeight="26.0" prefWidth="57.0" text="20 ">
+                        <Label fx:id="t2label" prefHeight="26.0" prefWidth="57.0" text="20 " textOverrun="CLIP">
                            <font>
                               <Font size="17.0" />
                            </font>
@@ -73,7 +73,7 @@
                         </Label>
                      </children>
                   </HBox>
-                  <Label text="Outdor Temperature:">
+                  <Label text="Outdoor Temperature:">
                      <VBox.margin>
                         <Insets left="10.0" top="20.0" />
                      </VBox.margin>
@@ -91,7 +91,7 @@
                               <Insets left="20.0" />
                            </HBox.margin>
                         </Label>
-                        <Label fx:id="t3label" prefHeight="26.0" prefWidth="57.0" text="20 ">
+                        <Label fx:id="t3label" prefHeight="26.0" prefWidth="57.0" text="20 " textOverrun="CLIP">
                            <font>
                               <Font size="17.0" />
                            </font>

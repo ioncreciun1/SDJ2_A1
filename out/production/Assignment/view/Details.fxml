@@ -12,19 +12,19 @@
    <children>
       <VBox alignment="CENTER" prefHeight="400.0" prefWidth="600.0">
          <children>
-            <LineChart title="Heating Statistic">
+            <LineChart prefHeight="360.0" prefWidth="600.0" title="Heating Statistic">
               <xAxis>
                 <CategoryAxis label="Time" prefHeight="20.0" prefWidth="543.0" side="BOTTOM" />
               </xAxis>
               <yAxis>
-                <NumberAxis label="Temperature" side="LEFT" tickLabelGap="5.0" tickLength="5.0" upperBound="40.0">
+                <NumberAxis label="Temperature" side="LEFT" tickLabelGap="5.0" tickLength="5.0" upperBound="10.0">
                      <tickLabelFont>
                         <Font size="13.0" />
                      </tickLabelFont>
                   </NumberAxis>
               </yAxis>
             </LineChart>
-            <Button mnemonicParsing="false" onAction="#cancel" text="Cancel" />
+            <Button mnemonicParsing="false" onAction="#cancel" style="-fx-background-radius: 100;" text="Cancel" />
          </children>
       </VBox>
    </children>

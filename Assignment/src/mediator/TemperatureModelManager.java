@@ -13,8 +13,8 @@ public class TemperatureModelManager implements  TemperatureModel
   private PropertyChangeSupport property;
   private Heater heater;
   private TemperatureList list = new TemperatureList();
-  private int highCriticalValue;
-  private int lowCriticalValue;
+  private int highCriticalValue=18;
+  private int lowCriticalValue=12;
 
   public TemperatureModelManager(){
     this.heater = new Heater();
@@ -26,7 +26,14 @@ public class TemperatureModelManager implements  TemperatureModel
   {
     if(lowCriticalValue<highCriticalValue)
     {
-      property.firePropertyChange("end",null,0);
+
+      if(getLastInsertedTemperature("t1").getValue() > highCriticalValue ||
+          getLastInsertedTemperature("t1").getValue() < lowCriticalValue ||
+      getLastInsertedTemperature("t2").getValue() > highCriticalValue ||
+        getLastInsertedTemperature("t2").getValue() < lowCriticalValue)
+      {
+        property.firePropertyChange("end", null, 0);
+      }
       this.highCriticalValue = highCriticalValue;
       this.lowCriticalValue = lowCriticalValue;
 
@@ -51,6 +58,11 @@ public class TemperatureModelManager implements  TemperatureModel
     if (old != null && old.getValue() != temperature.getValue())
     {
       property.firePropertyChange("temperature", old, temperature);
+      if(temperature.getValue() <lowCriticalValue || temperature.getValue() > highCriticalValue )
+      {
+        System.out.println("I am here");
+        property.firePropertyChange("end", null, 0);
+      }
     }
   }
 
@@ -77,9 +89,15 @@ public class TemperatureModelManager implements  TemperatureModel
     return  heater.position();
   }
 
-  @Override public void checkTemp()
+  @Override public void addOutdoorTemp(String id, double value)
   {
-    if(getLastInsertedTemperature())
+    Temperature temperature = new Temperature(id, value);
+    Temperature old = getLastInsertedTemperature(id);
+    this.list.addTemperature(temperature);
+    if (old != null && old.getValue() != temperature.getValue())
+    {
+      property.firePropertyChange("temperature", old, temperature);
+    }
   }
 
   @Override public Heater getHeather()

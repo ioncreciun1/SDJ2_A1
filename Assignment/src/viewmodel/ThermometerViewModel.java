@@ -17,7 +17,8 @@ public class ThermometerViewModel implements PropertyChangeListener
   private StringProperty outTemp;
   private IntegerProperty highValue;
   private IntegerProperty lowValue;
-  private BooleanProperty end;
+  private StringProperty style;
+  private boolean end = false;
 
   private  StringProperty heather;
 
@@ -28,9 +29,9 @@ public class ThermometerViewModel implements PropertyChangeListener
     this.error = new SimpleStringProperty();
     this.temp1 = new SimpleStringProperty();
     this.temp2 = new SimpleStringProperty();
-    this.highValue = new SimpleIntegerProperty();
-    this.lowValue = new SimpleIntegerProperty();
-    this.end = new SimpleBooleanProperty();
+    this.highValue = new SimpleIntegerProperty(18);
+    this.lowValue = new SimpleIntegerProperty(12);
+    this.style = new SimpleStringProperty();
 
     model.addListener("temperature",this);
     model.addListener("power", this);
@@ -71,9 +72,9 @@ public class ThermometerViewModel implements PropertyChangeListener
     return heather;
   }
 
-  public BooleanProperty endProperty()
+  public StringProperty styleProperty()
   {
-    return end;
+    return style;
   }
 
   public StringProperty errorProperty()
@@ -103,21 +104,28 @@ public class ThermometerViewModel implements PropertyChangeListener
   @Override public void propertyChange(PropertyChangeEvent evt)
   {
     Platform.runLater(()->{
-      System.out.println(highValue.get() + " WTF");
       switch (evt.getPropertyName())
       {
+
         case "temperature" :
           Temperature temp = (Temperature)evt.getNewValue();
+          System.out.println(evt.getNewValue());
+          style.set("-fx-background-color:black");
+          if(evt.getPropertyName().equals("end"))
+          {
+            style.set("-fx-background-color:red");
+          }
+
           switch (temp.getId())
           {
-            case "t1" : temp1.set(temp.getValue() + ""); break;
+            case "t1" : temp1.set(Double.toString(temp.getValue())); break;
             case "t2" : temp2.set(temp.getValue() + ""); break;
             case "t3" : outTemp.set(temp.getValue() + ""); break;
           }
         case "power" :
           heather.set(model.position() + ""); break;
         case "end" :
-          end.set(true);
+            style.set("-fx-background-color:red");
       }
     });
   }

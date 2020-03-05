@@ -13,6 +13,5 @@ public interface TemperatureModel extends NamedPropertyChangeSubject
   void turnDownHeather();
   Heater getHeather();
   int position();
-  void checkTemp();
-//  void addOutsideTemperature(String id, double outsideT);
+  void addOutdoorTemp(String id,double value);
 }
