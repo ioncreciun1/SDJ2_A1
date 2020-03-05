@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ThermometerViewController">
+   <children>
+      <HBox prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <VBox alignment="TOP_CENTER" prefHeight="400.0" prefWidth="317.0" style="-fx-background-color: rgba(148,148,148,0.50) 100%; -fx-border-color: black; -fx-border-width: 3px 0px 3px 3px;">
+               <children>
+                  <Label text="Indor Themperature:">
+                     <VBox.margin>
+                        <Insets left="10.0" top="40.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="23.0" />
+                     </font>
+                  </Label>
+                  <HBox prefHeight="38.0" prefWidth="317.0">
+                     <children>
+                        <Label text="Thermometer 1:">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label fx:id="t1label" prefHeight="26.0" prefWidth="57.0" text="20 ">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label text=" ° C">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="39.0" prefWidth="317.0">
+                     <children>
+                        <Label text="Thermometer 2:">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label fx:id="t2label" prefHeight="26.0" prefWidth="57.0" text="20 ">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label text=" ° C">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <Label text="Outdor Temperature:">
+                     <VBox.margin>
+                        <Insets left="10.0" top="20.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="23.0" />
+                     </font>
+                  </Label>
+                  <HBox prefHeight="39.0" prefWidth="317.0">
+                     <children>
+                        <Label text="Thermometer: ">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label fx:id="t3label" prefHeight="26.0" prefWidth="57.0" text="20 ">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label text=" ° C">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="79.0" prefWidth="312.0">
+                     <children>
+                        <Label style="-fx-border-color: gray; -fx-border-width: 0px 0px 3px 0px;" text="MAX:">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="highValue" onAction="#setValue" style="-fx-background-color: transparent; -fx-border-color: gray; -fx-border-width: 0px 0px 3px 0px;" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="76.0" prefWidth="312.0">
+                     <children>
+                        <Label style="-fx-border-color: gray; -fx-border-width: 0px 0px 3px 0px;" text="MIN:">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="lowValue" onAction="#setValue" style="-fx-background-color: transparent; -fx-border-color: gray; -fx-border-width: 0px 0px 3px 0px;" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <VBox alignment="TOP_CENTER" prefHeight="400.0" prefWidth="287.0" style="-fx-background-color: rgba(148,148,148,0.50) 100%; -fx-border-color: Black; -fx-border-width: 3px 3px 3px 0px;">
+               <children>
+                  <Label text="Heat level">
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="hlabel" prefHeight="125.0" prefWidth="55.0" style="-fx-text-fill: lightgreen; -fx-border-color: black; -fx-border-width: 2px 1px 2px 1px;" text="1">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="85.0" />
+                     </font>
+                  </Label>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#upPressed" prefHeight="44.0" prefWidth="79.0" style="-fx-background-radius: 100;" text="Up">
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button mnemonicParsing="false" onAction="#downPressed" prefHeight="45.0" prefWidth="81.0" style="-fx-background-radius: 100;" text="Down">
+                           <HBox.margin>
+                              <Insets left="50.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </HBox>
+                  <Button mnemonicParsing="false" onAction="#details" prefHeight="65.0" prefWidth="135.0" style="-fx-background-radius: 50;" text="Details">
+                     <VBox.margin>
+                        <Insets top="30.0" />
+                     </VBox.margin>
+                  </Button>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>
