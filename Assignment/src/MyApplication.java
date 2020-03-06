@@ -18,14 +18,14 @@ public class MyApplication extends Application
 
     Thermometer t1 = new Thermometer("t1",1,4,15,1,model);
     Thermometer t2 = new Thermometer("t2",1,6,15,7,model);
-    //OutThermometer out = new OutThermometer("t3",model,0,5);
+    OutThermometer out = new OutThermometer("t3",model,0,5);
 
     Thread th1 = new Thread(t1);
     Thread th2 = new Thread(t2);
-    //Thread th3 = new Thread(out);
+    Thread th3 = new Thread(out);
     th1.start();
     th2.start();
-   // th3.start();
+    th3.start();
     view.start(primaryStage);
   }
 }

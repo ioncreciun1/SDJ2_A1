@@ -12,12 +12,12 @@
    <children>
       <VBox alignment="CENTER" prefHeight="400.0" prefWidth="600.0">
          <children>
-            <LineChart prefHeight="360.0" prefWidth="600.0" title="Heating Statistic">
+            <LineChart fx:id="TemperatureChart" prefHeight="360.0" prefWidth="600.0" title="Heating Statistic">
               <xAxis>
                 <CategoryAxis label="Time" prefHeight="20.0" prefWidth="543.0" side="BOTTOM" />
               </xAxis>
               <yAxis>
-                <NumberAxis label="Temperature" side="LEFT" tickLabelGap="5.0" tickLength="5.0" upperBound="10.0">
+                <NumberAxis autoRanging="false" label="Temperature" lowerBound="12.0" side="LEFT" tickLabelGap="5.0" tickLength="5.0" upperBound="30.0">
                      <tickLabelFont>
                         <Font size="13.0" />
                      </tickLabelFont>

@@ -7,6 +7,7 @@ import model.TemperatureList;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.util.ArrayList;
 
 public class TemperatureModelManager implements  TemperatureModel
 {
@@ -60,7 +61,7 @@ public class TemperatureModelManager implements  TemperatureModel
       property.firePropertyChange("temperature", old, temperature);
       if(temperature.getValue() <lowCriticalValue || temperature.getValue() > highCriticalValue )
       {
-        System.out.println("I am here");
+        //System.out.println("I am here");
         property.firePropertyChange("end", null, 0);
       }
     }
@@ -99,7 +100,6 @@ public class TemperatureModelManager implements  TemperatureModel
       property.firePropertyChange("temperature", old, temperature);
     }
   }
-
   @Override public Heater getHeather()
   {
     return heater;

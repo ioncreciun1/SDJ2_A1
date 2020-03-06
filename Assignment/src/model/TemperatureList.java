@@ -30,9 +30,7 @@ public class TemperatureList
       }
       return null;
    }
-   public ArrayList<Temperature> getOutdoor(){
-      return outdoor;
-   }
+
    public Temperature getLastTemperature(String id)
    {
       if (list.size() < 1)

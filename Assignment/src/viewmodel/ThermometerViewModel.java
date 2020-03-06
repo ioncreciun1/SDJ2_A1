@@ -104,18 +104,26 @@ public class ThermometerViewModel implements PropertyChangeListener
   @Override public void propertyChange(PropertyChangeEvent evt)
   {
     Platform.runLater(()->{
+
       switch (evt.getPropertyName())
       {
 
         case "temperature" :
           Temperature temp = (Temperature)evt.getNewValue();
-          System.out.println(evt.getNewValue());
-          style.set("-fx-background-color:black");
-          if(evt.getPropertyName().equals("end"))
-          {
-            style.set("-fx-background-color:red");
-          }
+       if(!temp.getId().equals("t3") && temp1.get()!=null && temp2.get()!=null)
+       {
+         if ( (Double.parseDouble(temp1.get())> highValue.get() || Double.parseDouble(temp1.get()) < lowValue.get())
+         ||( Double.parseDouble(temp2.get()) > highValue.get() || Double.parseDouble(temp2.get()) < lowValue.get()))
 
+         {
+
+           style.set("-fx-background-color:red");
+         }
+         else
+         {
+           style.set("-fx-background-color: rgba(148,148,148,0.50) 100%");
+         }
+       }
           switch (temp.getId())
           {
             case "t1" : temp1.set(Double.toString(temp.getValue())); break;
