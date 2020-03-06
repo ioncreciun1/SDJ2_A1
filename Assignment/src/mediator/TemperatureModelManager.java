@@ -13,8 +13,8 @@ public class TemperatureModelManager implements  TemperatureModel
   private PropertyChangeSupport property;
   private Heater heater;
   private TemperatureList list = new TemperatureList();
-  private int highCriticalValue=18;
-  private int lowCriticalValue=12;
+  private int highCriticalValue=20;
+  private int lowCriticalValue=10;
 
   public TemperatureModelManager(){
     this.heater = new Heater();
