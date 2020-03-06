@@ -14,14 +14,18 @@ public class TemperatureModelManager implements  TemperatureModel
   private PropertyChangeSupport property;
   private Heater heater;
   private TemperatureList list = new TemperatureList();
-  private int highCriticalValue=18;
-  private int lowCriticalValue=12;
+  private int highCriticalValue=20;
+  private int lowCriticalValue=10;
 
   public TemperatureModelManager(){
     this.heater = new Heater();
     property = new PropertyChangeSupport(this);
   }
 
+  @Override public ArrayList<Temperature> getAllTemp()
+  {
+    return list.getAllTemp();
+  }
 
   @Override public void setCriticalValues(int highCriticalValue,int lowCriticalValue)
   {
@@ -93,13 +97,19 @@ public class TemperatureModelManager implements  TemperatureModel
   @Override public void addOutdoorTemp(String id, double value)
   {
     Temperature temperature = new Temperature(id, value);
-    Temperature old = getLastInsertedTemperature(id);
-    this.list.addTemperature(temperature);
+    Temperature old = getLastInsertedOutDoorTemperature(id);
+    this.list.addOutdoorTemperature(temperature);
     if (old != null && old.getValue() != temperature.getValue())
     {
       property.firePropertyChange("temperature", old, temperature);
     }
   }
+
+  private Temperature getLastInsertedOutDoorTemperature(String id)
+  {
+    return list.getLastOutdoorTemperature(id);
+  }
+
   @Override public Heater getHeather()
   {
     return heater;

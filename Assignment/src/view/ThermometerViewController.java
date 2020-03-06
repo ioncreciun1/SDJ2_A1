@@ -3,6 +3,8 @@ package view;
 import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Region;
 import javafx.scene.control.Label;
@@ -10,6 +12,7 @@ import javafx.scene.control.TextField;
 import viewmodel.ThermometerViewModel;
 
 import java.awt.*;
+import java.util.Optional;
 
 public class ThermometerViewController
 { @FXML public TextField highValue;
@@ -69,6 +72,33 @@ public class ThermometerViewController
 
   public void setValue(ActionEvent event)
   {
+    boolean remove = confirmation();
+
+    if (remove)
     viewModel.setCriticalValues();
+  }
+
+  private boolean confirmation()
+  {
+    if( Double.parseDouble(highValue.getText())<= 50 && Double.parseDouble(lowValue.getText()) >= 10)
+    {
+      return false;
+    }
+
+    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+    alert.setTitle("Error");
+    if(Double.parseDouble(highValue.getText()) <= 50)
+    {
+      lowValue.setText("10");
+      alert.setHeaderText(
+          "Min temperature cant be lower than 10");
+    } else if (Double.parseDouble(lowValue.getText()) >= 10)
+    {
+      highValue.setText("50");
+      alert.setHeaderText(
+          "Max temperature cant be higher than 50");
+    }
+    Optional<ButtonType> result = alert.showAndWait();
+    return (result.isPresent()) && (result.get() == ButtonType.OK);
   }
 }

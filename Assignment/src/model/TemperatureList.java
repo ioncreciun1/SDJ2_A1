@@ -50,7 +50,19 @@ public class TemperatureList
       }
       return null;
    }
-
+   public ArrayList<Temperature> getAllTemp()
+   {
+      ArrayList<Temperature> all = new ArrayList<>();
+      for(int i=0;i<list.size();i++)
+      {
+         all.add(list.get(i));
+      }
+      for(int i=0;i<outdoor.size();i++)
+      {
+         all.add(outdoor.get(i));
+      }
+      return all;
+   }
    public int getSize()
    {
       return list.size();

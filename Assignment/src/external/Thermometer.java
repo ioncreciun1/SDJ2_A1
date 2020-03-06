@@ -24,6 +24,16 @@ public class Thermometer implements Runnable
     this.sleepTime = sleepTime;
   }
 
+  public String getName()
+  {
+    return id;
+  }
+
+  public double getT()
+  {
+    return t;
+  }
+
   /*** Calculating the internal temperature in one of two locations.
    * *This includes a term from a heater (depending on location and
    * * heaters power), and a term from an outdoor heat loss.

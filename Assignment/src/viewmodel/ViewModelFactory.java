@@ -9,7 +9,7 @@ public class ViewModelFactory
   public ViewModelFactory(TemperatureModel model)
   {
     thermometerViewModel = new ThermometerViewModel(model);
-    detailsViewModel = new DetailsViewModel();
+    detailsViewModel = new DetailsViewModel(model);
   }
 
   public ThermometerViewModel getThermometerViewModel()

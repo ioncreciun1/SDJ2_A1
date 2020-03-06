@@ -1,7 +1,10 @@
 package mediator;
 
 import model.Heater;
+import model.Temperature;
 import utility.observer.subject.NamedPropertyChangeSubject;
+
+import java.util.ArrayList;
 
 public interface TemperatureModel extends NamedPropertyChangeSubject
 {
@@ -14,4 +17,5 @@ public interface TemperatureModel extends NamedPropertyChangeSubject
   Heater getHeather();
   int position();
   void addOutdoorTemp(String id,double value);
+  ArrayList<Temperature> getAllTemp();
 }
