@@ -10,6 +10,7 @@ import java.beans.PropertyChangeListener;
 
 public class ThermometerViewModel implements PropertyChangeListener
 {
+  private BooleanProperty huinea;
   private TemperatureModel model;
   private StringProperty error;
   private StringProperty temp1;
@@ -24,6 +25,7 @@ public class ThermometerViewModel implements PropertyChangeListener
 
   public ThermometerViewModel(TemperatureModel model){
     this.model= model;
+    this.huinea = new SimpleBooleanProperty(false);
     this.outTemp = new SimpleStringProperty("0");
     this.heather = new SimpleStringProperty("0");
     this.error = new SimpleStringProperty();
@@ -52,7 +54,10 @@ public class ThermometerViewModel implements PropertyChangeListener
     return model.position();
   }
 
-
+  public BooleanProperty getHui()
+  {
+    return  huinea;
+  }
   public void setCriticalValues()
   {
       model.setCriticalValues(highValue.get(),lowValue.get());
@@ -88,6 +93,7 @@ public class ThermometerViewModel implements PropertyChangeListener
   {
   }
 
+
   public StringProperty outTempProperty()
   {
     return outTemp;
@@ -106,7 +112,9 @@ public class ThermometerViewModel implements PropertyChangeListener
   @Override public void propertyChange(PropertyChangeEvent evt)
   {
     Platform.runLater(()->{
-
+      System.out.println(huinea.get() );
+      System.out.println("LOW VALUE " + lowValue.get());
+      System.out.println("High VALUE " + highValue.get());
       switch (evt.getPropertyName())
       {
         case "temperature" :
@@ -116,14 +124,16 @@ public class ThermometerViewModel implements PropertyChangeListener
        {
          if ( (Double.parseDouble(temp1.get())> highValue.get() || Double.parseDouble(temp1.get()) < lowValue.get())
          ||( Double.parseDouble(temp2.get()) > highValue.get() || Double.parseDouble(temp2.get()) < lowValue.get()))
-
          {
-
            style.set("-fx-background-color:red");
+           huinea.set(true);
+           System.out.println("I am here");
          }
          else
          {
-           style.set("-fx-background-color: rgba(148,148,148,0.50) 100%");
+           System.out.println("NOW i am here");
+           style.set("-fx-background-color: rgba(148,148,148,0.5) 100%");
+           huinea.set(false);
          }
        }
           switch (temp.getId())
@@ -135,7 +145,8 @@ public class ThermometerViewModel implements PropertyChangeListener
         case "power" :
           heather.set(model.position() + ""); break;
         case "end" :
-            style.set("-fx-background-color:red");
+          huinea.set(true);
+          style.set("-fx-background-color:red");
       }
     });
   }

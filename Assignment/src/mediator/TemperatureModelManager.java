@@ -14,8 +14,8 @@ public class TemperatureModelManager implements  TemperatureModel
   private PropertyChangeSupport property;
   private Heater heater;
   private TemperatureList list = new TemperatureList();
-  private int highCriticalValue=20;
-  private int lowCriticalValue=10;
+  private int highCriticalValue= 20;
+  private int lowCriticalValue = 10;
 
   public TemperatureModelManager(){
     this.heater = new Heater();
@@ -31,7 +31,10 @@ public class TemperatureModelManager implements  TemperatureModel
   {
     if(lowCriticalValue<highCriticalValue)
     {
-
+      System.out.println(getLastInsertedTemperature("t1").getValue() > highCriticalValue ||
+          getLastInsertedTemperature("t1").getValue() < lowCriticalValue ||
+          getLastInsertedTemperature("t2").getValue() > highCriticalValue ||
+          getLastInsertedTemperature("t2").getValue() < lowCriticalValue);
       if(getLastInsertedTemperature("t1").getValue() > highCriticalValue ||
           getLastInsertedTemperature("t1").getValue() < lowCriticalValue ||
       getLastInsertedTemperature("t2").getValue() > highCriticalValue ||
@@ -65,8 +68,13 @@ public class TemperatureModelManager implements  TemperatureModel
       property.firePropertyChange("temperature", old, temperature);
       if(temperature.getValue() <lowCriticalValue || temperature.getValue() > highCriticalValue )
       {
-        //System.out.println("I am here");
-        property.firePropertyChange("end", null, 0);
+        if(getLastInsertedTemperature("t1").getValue() > highCriticalValue ||
+            getLastInsertedTemperature("t1").getValue() < lowCriticalValue ||
+            getLastInsertedTemperature("t2").getValue() > highCriticalValue ||
+            getLastInsertedTemperature("t2").getValue() < lowCriticalValue)
+        {
+          property.firePropertyChange("end", null, 0);
+        }
       }
     }
   }

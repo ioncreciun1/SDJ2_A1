@@ -39,9 +39,16 @@ public class ThermometerViewController
     hlabel.textProperty().bindBidirectional(viewModel.heatherProperty());
     t1label.textProperty().bindBidirectional(viewModel.temp1Property());
     t2label.textProperty().bindBidirectional(viewModel.temp2Property());
-   // pane.setStyle("-fx-background-color:black");
-
     pane.styleProperty().bindBidirectional(viewModel.styleProperty());
+    viewModel.getHui().addListener((obs,olB,newB)->{
+      if(viewModel.getHui().get())
+      {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("OVERHEATING");
+        alert.setHeaderText("Change Max value or turn off heater");
+        Optional<ButtonType> result = alert.showAndWait();
+      }
+    });
   }
 
   public void reset()
@@ -72,9 +79,7 @@ public class ThermometerViewController
 
   public void setValue(ActionEvent event)
   {
-    boolean remove = confirmation();
-
-    if (remove)
+    confirmation();
     viewModel.setCriticalValues();
   }
 
